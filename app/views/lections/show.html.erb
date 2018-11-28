@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="card mb-4">
+    <h6 class="card-header">
+      <span data-toggle="tooltip" data-placement="left" title="Click here to see the profile">
+      <%= t('home.by') %>  <%=link_to @lection.user.username, @lection.user  %>
+        <div class="badge badge-pill badge-secondary float-right"><%= t('home.created_at')%><%= @lection.created_at.to_s.split('+0300')[0] %></div>
+      </span>
+    </h6>
+    <div class="card-body">
+      <span data-toggle="tooltip" data-placement="right" title="Click here to edit">
+        <% if current_user %>
+        <% if  current_user==@lection.user  || current_user.admin %>
+        <div class="btn-group dropleft float-right">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+          <div class="dropdown-menu">
+            <%= link_to t('common.destroy'), @lection,class:"dropdown-item align-middle" , method: :delete, data: { confirm: 'Are you sure?' } %>
+            <td><%= link_to t('common.edit'), edit_lection_path(@lection),class:"dropdown-item align-middle" %></td>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+        <h1><%= @lection.title %></h1>
+        <hr>
+        <h6 class="card-title"><%= "#{@lection.description}"+" | " + "#{t('new.speciality')}" + "#{@lection.speciality}" %> </h6>
+        <hr>
+        <%= markdown(@lection.body) %>
+      </div>
+      <div class="card-footer text-muted">
+        <% @lection.tag_list.each do |tag| %>
+        <span class="badge badge-pill badge-info"><%= tag %></span>
+        <% end %>
+        <div class="badge badge-pill badge-primary float-right"> <%= "#{t('home.updated_at')}" + "#{@lection.updated_at.to_s.split('+0300')[0]}" %></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h2><%= t('show.comment') %></h2>
+      </div>
+      <div class="card-body">
+        <% if current_user %>
+        <%= form_with model: [@lection,@comment] do |f| %>
+        <div class="row">
+          <div class="col-md-10">
+          <%= f.text_field :body, class: "form-control form-control-lg" %>
+          </div>
+          <%= f.submit t('common.create'), class:  "btn btn-outline-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% else %>
+  <p>
+    <%= t('comment.need') %>
+   <%= link_to t('common.sign_in'), new_session_path %>
+  </p>
+  <% end %>
+  <div id="comment_pane">
+    <% @comments.each do |comment| %>
+    <%= render 'comments/comment', comment: comment %>
+    <% end %>
+  </div>

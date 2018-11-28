@@ -1,0 +1,57 @@
+<div class="container">
+  <%= form_tag users_edit_multiple_path(@user), method: :get do %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-xs-6">
+              <h3 class="panel-title" style="margin: 10px"><%=current_user.username %></h3>
+            </div>
+
+            <div class="col col-xs-6 text-right">
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <%= submit_tag "Delete", class: "btn btn-danger" %>
+                <%= submit_tag "Lock", class: "btn btn-warning" %>
+                <%= submit_tag "Unlock", class: "btn btn-success" %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <table class="table table-striped table-bordered table-list">
+          <thead>
+            <tr>
+              <th><%= check_box_tag('check_all', 'check_all', false, :onClick => "checkAll(this);") %></th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Role</th>
+              <th>Registered at</th>
+              <th><%= t('home.actions') %></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% User.all.each do |user| %>
+            <tr>
+              <td align="center"><%= check_box_tag "user_ids[]", user.id %></td>
+              <td><%= link_to user.username, user_path(user)  %></td>
+              <td><%= user.access_locked? ? t('common.lock') : t('common.unlock') %></td>
+              <td><%= user.admin ? t('common.admin') : t('common.user') %></td>
+              <td><%= user.created_at.to_s.split('+0300')[0] %></td>
+              <div class="row">
+              <td><%= submit_tag "Down", class: "btn btn-outline-danger" %>
+              <%= submit_tag "Up", class: "btn btn-outline-success" %></td>
+              </div>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+<% end %>
+</div>

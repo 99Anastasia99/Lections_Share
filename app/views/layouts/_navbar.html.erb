@@ -1,0 +1,41 @@
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <%= link_to "Lections Sharing", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to "#{current_user.username}", current_user, class: "nav-link" if current_user %>
+        </li>
+        <% if current_user && current_user.admin == true %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t('common.admin') %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to t('common.user_panel'), users_edit_multiple_path(@user), class: "dropdown-item" %>
+          </div>
+        </li>
+        <% end %>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+        <div class="form-inline my-2 my-lg-0">
+          <%= form_for :search_lections, url: search_lections_path, method: :get do |f| %>
+          <%= f.text_field :query, value: params[:search_lections].presence && params[:search_lections][:query], class: "form-control mr-sm-2", placeholder: t('common.search') %>
+          <%= f.submit t('common.search'), class: "btn btn-outline-success btn-sm" %>
+          <% end %>
+        </div>
+      </ul>
+      <% if !current_user %>
+      <%= link_to t('common.sign_in'), new_user_session_path , class: "btn btn-outline-info btn-sm",style: "margin:5px"  %>
+      <%= link_to t('common.sign_up') ,new_user_registration_path ,class: "btn btn-outline-primary btn-sm" %>
+      <% else %>
+      <%= link_to t('common.new_lection'), new_lection_path, class: "btn btn-primary btn-sm",style: "margin:5px" %>
+      <%= link_to t('common.sign_out'), destroy_user_session_path,class: 'btn btn-outline-info btn-sm', method: :delete if current_user %>
+      <% end %>
+    </div>
+  </nav>

@@ -1,0 +1,28 @@
+<table class="table table-striped table-bordered table-list">
+  <tr>
+    <th><%= sortable "title", t('new.title') %></th>
+    <th><%= sortable "speciality",t('new.speciality') %></th>
+    <th><%= sortable "description", t('new.description') %></th>
+    <th><%= sortable  "created_at", t('home.created_at') %></th>
+    <th><%= t('new.tags')%></th>
+    <th><%= t('home.actions')%></th>
+  </tr>
+  <% @lections.each do |lection| %>
+  <tr>
+    <td><%= truncate(lection.title, length: 10) %></td>
+    <td><%= lection.speciality %></td>
+    <td><%= truncate(lection.description, length: 20) %> </td>
+    <td><%= lection.created_at.to_s.split('+0300')[0] %> </td>
+    <td><% lection.tag_list.each do |tag| %>
+      <span class="badge badge-pill badge-success"><%= tag %></span>
+      <% end %>
+    </td>
+    <td><%= link_to t('common.show'), lection_path(lection), class: "btn btn-outline-success" %>
+      <% if current_user && current_user.admin || current_user == lection.user %>
+      <%= link_to t('common.edit'), edit_lection_path(lection), class: "btn btn-outline-warning" %>
+      <%= link_to t('common.destroy'), lection_path(lection), method: :delete, class: "btn btn-outline-danger", style: "margin: 2px",
+      data: { confirm: t('common.confirm') } %>
+      <% end %></td>
+    </tr>
+    <% end %>
+  </table>

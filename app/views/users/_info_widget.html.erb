@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h5><%= t('common.info') %> </h5>
+    </div>
+    <div class="card-body">
+        <div>
+        <%= "#{t('home.user_created_at')}" + "#{@user.created_at.to_s.split('+0300')[0]}" %>
+        </div>
+        <%#=  @user.current_sign_in_at %>
+    <%= t('home.lection') %> <strong> <%= @user.username %></strong> : <%= @user.lections.count %>
+    </div>
+  </div>
+</div>

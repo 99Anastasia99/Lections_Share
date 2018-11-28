@@ -1,0 +1,22 @@
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= f.error_notification %>
+<div class="form-inputs">
+
+  <strong>  <label for="email"> <%= t('activerecord.attributes.user.email') %> </label> </strong>
+  <div><%= best_in_place @user, :email, required: true, id: "email", autofocus: true %> </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+  <% end %>
+  <strong><%= f.input :password, required: false, id: "new_password", input_html: { autocomplete: "new-password" } %>
+
+  <%= f.input :password_confirmation,id: "confirm_password", required: false, input_html: { autocomplete: "new-password" } %>
+
+  <%= f.input :current_password, required: true, id: "old_password", input_html: { autocomplete: "current-password" } %>
+</strong>
+</div>
+
+<div class="form-actions">
+  <%= f.button :submit, t('common.update'),class: "btn btn-outline-info", style: "margin: 5px",style: "margin: 5px"%>
+</div>
+<% end %>

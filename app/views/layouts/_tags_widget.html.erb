@@ -1,0 +1,10 @@
+<div class="card my-2">
+    <h5 class="card-header"> <%= t('home.tags')%> </h5>
+  <div class="card-body">
+    <div id="tagscloud">
+    <% tag_cloud( Lection.tag_counts_on(:tags), %w(css1 css2 css3)) do |tag, css_class| %>
+    <%= link_to tag.name, { :controller => "lections", :action => "tagged", :tag => tag.name }, class: css_class %>
+  <% end %>
+  </div>
+  </div>
+</div>

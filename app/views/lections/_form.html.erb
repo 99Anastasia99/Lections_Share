@@ -1,0 +1,128 @@
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $(function() {
+    var dataset_string = document.getElementById('tags').dataset.autocomplete;
+    var available_tags = dataset_string.slice(2, dataset_string.length - 2).split('","')
+
+    function split(val) {
+      return val.split(/ \s*/);
+    }
+
+    function extractLast(term) {
+      return split(term).pop();
+    }
+
+    $("#tags")
+    .autocomplete({
+      minLength: 0,
+      source: function( request, response ) {
+        response( $.ui.autocomplete.filter(
+        available_tags, extractLast(request.term)));
+      },
+      focus: function() {
+        return false;
+      },
+      select: function(event, ui) {
+        var terms = split(this.value);
+        terms.pop();
+
+        terms.push( ui.item.value );
+        terms.push( "" );
+        this.value = terms.join( " " );
+        return false;
+      }
+    });
+  });
+</script>
+<%= form_with(model: lection, local: true) do |form| %>
+<br>
+<div class="container">
+
+  <% if lection.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(lection.errors.count, t('common.error')) %> <%= t('common.prohibited') %></h2>
+    <ul>
+      <% lection.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="card">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-header">
+
+          <div class="row">
+            <div class="col-2">
+              <%= link_to t('common.back'), lections_path, :class => "btn btn-outline-info" %>
+            </div>
+            <h5 class="col-8" style="text-align: center"><%= t('common.new_lection')%></h5>
+            <div class="col-2" style="text-align: right">
+              <%= form.submit t('common.create'),:class => "btn btn-outline-info" %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="form-group row">
+            <div class= "col-4 col-form-label">
+              <p>  <%= t('new.title') %></p>
+            </div>
+            <div class="col-8">
+              <%= form.text_field :title, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class= "col-4 col-form-label">
+              <p> <%= t('new.description') %> </p>
+            </div>
+            <div class="col-8">
+              <%= form.text_field :description, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class= "col-4 col-form-label">
+              <p>  <%= t('new.speciality') %> </p>
+            </div>
+            <div class="col-8">
+              <%= form.number_field :speciality, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class= "col-4 col-form-label">
+              <p> <%= t('new.tags') %> <a href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'> <%= t('new.markdown') %></a></p>
+            </div>
+            <div class="col-8">
+              <%= form.text_area :body, class: "form-control", rows: 5 %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class= "col-4 col-form-label">
+              <p> <%= t('new.tags') %> </p>
+            </div>
+            <div class="col-8">
+              <%= form.text_field :tag_list, class: "form-control", id: "tags", data: {autocomplete: ActsAsTaggableOn::Tag.pluck(:name)} %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<% end %>

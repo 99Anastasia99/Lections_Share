@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h5> <%= t('common.editing') %> </h5>
+        <%= link_to t('common.cancel'), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-info btn-sm", style: "float-left" %>
+    </div>
+    <div class="card-body">
+    <strong>  <label for="username"> <%= t('activerecord.attributes.user.username') %> </label> </strong>
+    <div><%= best_in_place @user, :username, :as => :input, id: "username"%></div>
+    <%= render 'users/change_email' %>
+    </div>
+  </div>
+</div>

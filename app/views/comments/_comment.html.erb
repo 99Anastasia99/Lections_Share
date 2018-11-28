@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="card my-4">
+    <h5 class="card-header">
+      <div id="comment-<%= comment.id %>">
+      <%= t('home.by') %>  <strong><%= link_to comment.user.username, comment.user %> </strong>
+      </h5>
+      <div class="card-body">
+      <%= comment.body %>
+      <%#= link_to "Delete", lection_comment_path(@lection, comment),method: :delete, remote: true, style: 'float: right' %>
+      <% if comment!=nil %>
+     <div id="likes_counter<%= comment.id %>" class="btn btn-danger btn-sm float-right" > <%= comment.likers_count %>  </div>
+     <% end %>
+  <%= link_to '♡', { :controller => "comments", :action => "like_dislike", :comment => comment }, method: :post, remote: true, class: "btn btn-outline-danger btn-sm float-right", id: "like_button" + comment.id.to_s %>
+      </div>
+    <div class="card-footer text-muted">
+        <%= "#{time_ago_in_words(comment.created_at)}" + "#{t('show.ago')}" %>
+      </div>
+    </div>
+  </div>
+</div>

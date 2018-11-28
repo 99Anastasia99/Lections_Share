@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+ .css1 { font-size: 1.0em; }
+ .css2 { font-size: 1.2em; }
+ .css3 { font-size: 1.4em; }
+ .css4 { font-size: 1.6em; }
+ @import "bootstrap";
+ .colorgraph {
+   height: 5px;
+   border-top: 0;
+   background: #c4e17f;
+   border-radius: 5px;
+   background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+   background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+   background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+ }
+ #login-dp .social-buttons{
+     margin:12px 0
+ }
+ #login-dp .social-buttons a{
+     width: 49%;
+ }
+ #login-dp .form-group {
+     margin-bottom: 6px;
+ }
+ .btn-fb{
+     color: #fff;
+     background-color:#3b5998;
+ }
+ .btn-fb:hover{
+     color: #fff;
+     background-color:#496ebc
+ }
+ .btn-vk{
+     color: #fff;
+     background-color:#3b5998;
+ }
+ .btn-vk:hover{
+     color: #fff;
+     background-color:#496ebc
+ }
+ .btn-tw{
+     color: #fff;
+     background-color:#55acee;
+ }
+ .btn-tw:hover{
+     color: #fff;
+     background-color:#59b5fa;
+ }
+ @media(max-width:768px){
+     #login-dp{
+         background-color: inherit;
+         color: #fff;
+     }
+     #login-dp .bottom{
+         background-color: inherit;
+         border-top:0 none;
+     }
+ }
+ .post {padding: 10px;color: rgb(102, 102, 102);overflow: hidden;line-height: 2em;margin-bottom: 10px;margin: 10px;}
+.post h2 { margin-top:0px; }
+.panel-body {padding: 0px;}
+ul.ui-autocomplete {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #999;
+  cursor: default;
+  li {
+    background-color: #FFF;
+    border-top: solid 1px #DDD;
+    margin: 0;
+    padding: 0;
+    a {
+      color: #000;
+      display: block;
+      padding: 3px;
+    }
+    a.ui-state-hover, a.ui-state-active {
+      background-color: #FFFCB2;
+    }
+  }
+}

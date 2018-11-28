@@ -1,0 +1,9 @@
+<div class="card">
+  <h5 class="card-header">
+    <%= link_to current_user.username, current_user %>
+  </h5>
+  <div class="card-body">
+    <div class="h6 text-muted"> <%= t('home.lection')%> </div>
+    <div class="h5"><%= current_user.lections.count  %></div>
+  </div>
+</div>
