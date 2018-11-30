@@ -3,7 +3,8 @@ class CommentBroadcastJob < ApplicationJob
 
   def perform(comment)
     ActionCable.server.broadcast "comments",( {
-      comment: render_comment(comment)
+      comment: render_comment(comment),
+      lection_id: data.lection.id
     })
   end
 

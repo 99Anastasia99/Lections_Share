@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_28_162314) do
+ActiveRecord::Schema.define(version: 2018_11_30_143226) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "body"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_11_28_162314) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.float "average_rate", default: 0.0
     t.index ["user_id"], name: "index_lections_on_user_id"
   end
 
@@ -43,16 +44,12 @@ ActiveRecord::Schema.define(version: 2018_11_28_162314) do
     t.index ["liker_id", "liker_type"], name: "fk_likes"
   end
 
-  create_table "rating_caches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "cacheable_type"
-    t.bigint "cacheable_id"
-    t.float "avg", null: false
-    t.integer "qty", null: false
-    t.string "dimension"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
-    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
+  create_table "ratings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "rating", default: 0
+    t.bigint "user_id"
+    t.bigint "lection_id"
+    t.index ["lection_id"], name: "index_ratings_on_lection_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -99,6 +96,7 @@ ActiveRecord::Schema.define(version: 2018_11_28_162314) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.string "theme", default: "light"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -106,4 +104,6 @@ ActiveRecord::Schema.define(version: 2018_11_28_162314) do
 
   add_foreign_key "comments", "lections"
   add_foreign_key "comments", "users"
+  add_foreign_key "ratings", "lections"
+  add_foreign_key "ratings", "users"
 end

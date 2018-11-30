@@ -51,11 +51,16 @@ en:
     update: "Update"
     admin: "Admin"
     user: "User"
-    lock: "Loked"
-    unlock: "Unlocked"
+    lock: "Lock"
+    unlock: "Unlock"
+    locked: "Locked"
+    unlocked: "Unlocked"
     user_panel: "User Panel"
   edit:
     confirmation: "Currently waiting confirmation for: "
+  admin_panel:
+    up: "Make admin"
+    down: "Make user"
   show:
     comment: "Let's create a comment!"
     need: "You need to"
@@ -84,6 +89,21 @@ en:
         restrict_dependent_destroy:
           has_one: "Cannot delete record because a dependent %{record} exists"
           has_many: "Cannot delete record because dependent %{record} exist"
+    models:
+      lections: "Lection"
+    attributes:
+      lection:
+        title: "Title"
+        body: "Body: "
+        description: "Description: "
+        speciality: "Спецыяльнасць: "
+        tags: "Tags: "
+      user:
+        username: "Iмя карыстальніка"
+        email: "Email"
+        password: "Пароль"
+        status: "Status"
+        role: "Role"
   date:
     abbr_day_names:
     - Sun

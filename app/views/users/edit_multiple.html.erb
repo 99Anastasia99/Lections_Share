@@ -11,9 +11,9 @@
 
             <div class="col col-xs-6 text-right">
               <div class="btn-group mr-2" role="group" aria-label="First group">
-                <%= submit_tag "Delete", class: "btn btn-danger" %>
-                <%= submit_tag "Lock", class: "btn btn-warning" %>
-                <%= submit_tag "Unlock", class: "btn btn-success" %>
+                <%= submit_tag t('common.destroy'), class: "btn btn-outline-danger" %>
+                <%= submit_tag t('common.lock'), class: "btn btn-outline-warning" %>
+                <%= submit_tag t('common.unlock'), class: "btn btn-outline-success" %>
               </div>
             </div>
 
@@ -24,10 +24,10 @@
           <thead>
             <tr>
               <th><%= check_box_tag('check_all', 'check_all', false, :onClick => "checkAll(this);") %></th>
-              <th>Email</th>
-              <th>Status</th>
-              <th>Role</th>
-              <th>Registered at</th>
+              <th><%= t('activerecord.attributes.user.username') %></th>
+              <th><%= t('activerecord.attributes.user.status') %></th>
+              <th><%= t('activerecord.attributes.user.role') %></th>
+              <th><%= t('home.user_created_at') %></th>
               <th><%= t('home.actions') %></th>
             </tr>
           </thead>
@@ -37,12 +37,12 @@
             <tr>
               <td align="center"><%= check_box_tag "user_ids[]", user.id %></td>
               <td><%= link_to user.username, user_path(user)  %></td>
-              <td><%= user.access_locked? ? t('common.lock') : t('common.unlock') %></td>
+              <td><%= user.access_locked? ? t('common.locked') : t('common.unlocked') %></td>
               <td><%= user.admin ? t('common.admin') : t('common.user') %></td>
               <td><%= user.created_at.to_s.split('+0300')[0] %></td>
               <div class="row">
-              <td><%= submit_tag "Down", class: "btn btn-outline-danger" %>
-              <%= submit_tag "Up", class: "btn btn-outline-success" %></td>
+              <td><%= submit_tag t('admin_panel.down'), class: "btn btn-outline-danger" %>
+              <%= submit_tag t('admin_panel.up'), class: "btn btn-outline-success" %></td>
               </div>
             </tr>
             <% end %>

@@ -3,6 +3,9 @@
     <h6 class="card-header">
       <span data-toggle="tooltip" data-placement="left" title="Click here to see the profile">
       <%= t('home.by') %>  <%=link_to @lection.user.username, @lection.user  %>
+      <div id="rating_results" date-rome>
+      <%= render 'ratings/create' %>
+      </div>
         <div class="badge badge-pill badge-secondary float-right"><%= t('home.created_at')%><%= @lection.created_at.to_s.split('+0300')[0] %></div>
       </span>
     </h6>
@@ -51,13 +54,8 @@
     </div>
   </div>
   <% end %>
-  <% else %>
-  <p>
-    <%= t('comment.need') %>
-   <%= link_to t('common.sign_in'), new_session_path %>
-  </p>
   <% end %>
-  <div id="comment_pane">
+  <div id="comment_pane_<% @lection.id %>">
     <% @comments.each do |comment| %>
     <%= render 'comments/comment', comment: comment %>
     <% end %>

@@ -8,8 +8,5 @@ class AddLikesToComments < ActiveRecord::Migration[5.2]
     end
       add_column :users, :likees_count, :integer, :default => 0
       add_column :comments, :likers_count, :integer, :default => 0
-
-      add_index :likes, ["liker_id", "liker_type"],       :name => "fk_likes"
-      add_index :likes, ["likeable_id", "likeable_type"], :name => "fk_likeables"
     end
   end

@@ -18,10 +18,18 @@ be:
     editing: "Рэдагаванне"
     cancel: "Выдаліць рахунак"
     update: "Аднавіць"
-    admin: "Адміністраванне"
+    admin: "Адміністратар"
+    user: "Kарыстальнікамі"
+    lock: "Заблакаваць"
+    unlock: "Разблакаваць"
+    locked: "Заблякаваны"
+    unlocked: "Разблякаваны"
     user_panel: "Панэль кіравання карыстальнікамі"
   edit:
     confirmation: "Чакаем пацверджанне для: "
+  admin_panel:
+    up: "Павысіць"
+    down: "Панізіць"
   show:
     comment: "Стварыце каментар!"
     need: "Вы павінны"
@@ -38,7 +46,7 @@ be:
     has: " мае "
   new:
     title: "Назва: "
-    body:  "Змест канспекта: "
+    body: "Змест канспекта: "
     description: "Апісанне: "
     speciality: "Спецыяльнасць: "
     markdown: " з падтрымкай markdown"
@@ -50,6 +58,21 @@ be:
         restrict_dependent_destroy:
           has_one: Нельга выдаліць запіс, таму што існуе залежнасць %{record}
           has_many: Нельга выдаліць запіс, таму што існуюць залежнасці %{record}
+    models:
+      lections: "Канспект"
+    attributes:
+      lection:
+        title: "Назва"
+        body: "Змест канспекта: "
+        description: "Апісанне: "
+        speciality: "Спецыяльнасць: "
+        tags: "Тэгі: "
+      user:
+        username: "Iмя карыстальніка"
+        email: "Email"
+        password: "Пароль"
+        status: "Статус"
+        role: "Роля"
   date:
     abbr_day_names:
     - Пан

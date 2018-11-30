@@ -1,8 +1,8 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
-  <div class="row" style=" margin:auto; max-width:300px;">
+  <div class="row" style="margin-top:20px; margin-left:350px">
       <fieldset>
-        <h1>Sign up</h1>
+        <h1 style="text-align:center"><%= t('common.sign_up') %></h1>
         <hr class="colorgraph">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
@@ -12,20 +12,20 @@
             <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
             <a href="#" class="btn btn-vk"><i class="fa fa-vk"></i> Vkontakte</a>
           </div>
-        <br> <%= f.text_field :username, class: 'form-control input-lg', autocomplete: "username",placeholder: "Username" %> </br>
-       <%= f.email_field :email, autofocus: true, class: 'form-control input-lg', autocomplete: "email",placeholder: "Email adress" %>
+        <br> <%= f.text_field :username, class: 'form-control input-lg', autocomplete: "username",placeholder:  t('activerecord.attributes.uesr.username') %> </br>
+       <%= f.email_field :email, autofocus: true, class: 'form-control input-lg', autocomplete: "email",placeholder:  t('activerecord.attributes.user.email') %> %>
         </div>
 
         <div class="form-group">
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password,class: 'form-control input-lg', autocomplete: "new-password",placeholder: "Password" %>
+          <%= f.password_field :password,class: 'form-control input-lg', autocomplete: "new-password",placeholder:  t('activerecord.attributes.user.password') %> %>
         </div>
 
         <div class="form-group">
           <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation,class: 'form-control input-lg', autocomplete: "new-password", placeholder: "Password confirmation"%>
+          <%= f.password_field :password_confirmation,class: 'form-control input-lg', autocomplete: "new-password", placeholder: t('activerecord.attributes.user.password_confirmation') %>
         </div>
         <hr class="colorgraph">
         <div class="row">

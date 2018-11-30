@@ -12,32 +12,37 @@ class UsersController < ApplicationController
   end
 
   def destroy
-      @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def make_admin
-      @user.admin=true
-      @user.save
+    @user.each do  |user_to_admin|
+      user_to_admin.admin=true
+      user_to_admin.save
+    end
   end
 
   def make_user
-     @user.admin=false
-     @user.save
+    @user.each do  |user_to_admin|
+      user_to_admin.admin=false
+      user_to_admin.save
     end
+  end
 
-   def edit_multiple
-     if params_edit == "Delete"
-       User.where(id: params[:user_ids]).destroy_all
-     elsif params_edit == "Lock"
-       User.where(id: params[:user_ids]).each do |user_to_lock|
-         user_to_lock.lock_access!
-       end
-     elsif params_edit == "Unlock"
-       User.where(id: params[:user_ids]).each do |user_to_unlock|
-         user_to_unlock.unlock_access!
-       end
-     end
-   end
+  def edit_multiple
+    @user=User.where(id: params[:user_ids])
+    if params_edit == t('common.destroy')
+      @user.destroy_all
+    elsif params_edit == t('common.lock')
+      @user.each {|user_to_lock| user_to_lock.lock_access! }
+    elsif params_edit == t('common.unlock')
+      @user.each {|user_to_unlock| user_to_unlock.unlock_access!} 
+    elsif params_edit == t('admin_panel.up')
+      @user = make_admin
+    elsif params_edit == t('admin_panel.down')
+      @user = make_user
+    end
+  end
 
   def update
     @user = User.find(params[:id])
@@ -52,11 +57,11 @@ class UsersController < ApplicationController
   end
 
   def params_edit
-  params[:commit]
+    params[:commit]
   end
 
   def params_sort
-  params[:sort]||"title"
+    params[:sort]||"title"
   end
 
   def params_direction

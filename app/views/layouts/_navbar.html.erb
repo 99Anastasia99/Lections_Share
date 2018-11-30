@@ -30,6 +30,9 @@
           <% end %>
         </div>
       </ul>
+       <%#= link_to "Ru", {:controller => "application", :action => "set_locale_cookie", :locale => :ru } , class: "btn btn-outline-light btn-sm" %>
+       <%#= link_to "En", {:controller => "application", :action => "set_locale_cookie", :locale => :en }, class: "btn btn-outline-light btn-sm" %>
+       <%#= link_to "Be", {:controller => "application", :action => "set_locale_cookie", :locale => :be }, class: "btn btn-outline-light btn-sm" %>
       <% if !current_user %>
       <%= link_to t('common.sign_in'), new_user_session_path , class: "btn btn-outline-info btn-sm",style: "margin:5px"  %>
       <%= link_to t('common.sign_up') ,new_user_registration_path ,class: "btn btn-outline-primary btn-sm" %>

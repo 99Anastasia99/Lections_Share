@@ -24,16 +24,17 @@ class LectionsController < ApplicationController
       @lections=LectionsIndex.query(multi_match: {fields: ['title','description','body','user','comments'], query: @query, type: "phrase_prefix"}).objects
     end
     respond_to do |format|
-    format.html
-    format.js
-     end
+      format.html
+      format.js
+    end
   end
 
   def show
+    @current_user = current_user
+    @rating=Rating.new
     @comment = Comment.new
     @comments = @lection.comments.order( "updated_at DESC")
   end
-
   # GET /lections/new
   def new
     @lection = current_user.lections.new

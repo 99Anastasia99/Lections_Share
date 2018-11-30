@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   acts_as_liker
-  ratyrate_rater
   update_index('lections#lection') { lections }
   has_many :comments, dependent: :destroy
   has_many :lections, dependent: :destroy
+  has_many :ratings, dependent: :destroy
   before_create :confirmation_token
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
