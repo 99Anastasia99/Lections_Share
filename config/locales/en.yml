@@ -96,12 +96,13 @@ en:
         title: "Title"
         body: "Body: "
         description: "Description: "
-        speciality: "Спецыяльнасць: "
+        speciality: "Speciality: "
         tags: "Tags: "
       user:
-        username: "Iмя карыстальніка"
+        password_confirmation: "Password confirmation"
+        username: "Username"
         email: "Email"
-        password: "Пароль"
+        password: "Password"
         status: "Status"
         role: "Role"
   date:

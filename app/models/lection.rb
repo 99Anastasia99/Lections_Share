@@ -15,12 +15,14 @@ class Lection < ApplicationRecord
     end
   end
 
-  def average_rate
-    if self.ratings.to_i > 2
-      self.ratings.to_i.each do |t|
-        average_rate=(average_rate.to_i + t)/2
-        return average_rate
+  def average_rating
+    if self.ratings.count > 1
+      rating_sum = 0
+      self.ratings.pluck(:rating).each { |t| rating_sum += t }
+      return average_rate = rating_sum / self.ratings.count
+      self.update(:average_rate => average_rate)
     end
+
   end
 
 end
