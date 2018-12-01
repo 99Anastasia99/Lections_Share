@@ -1,9 +1,8 @@
 <div class="card mb-4">
   <h6 class="card-header">
     <span data-toggle="tooltip" data-placement="left" title="Click here to see the profile">
-      <%= t('home.by') %> <%=link_to lection.user.username, lection.user %>
+      <%= t('home.by') %> <%=link_to lection.user.username, lection.user %></span>
       <div class="badge badge-pill badge-secondary float-right"><%= t('home.created_at')%> <%= lection.created_at.to_s.split('+0300')[0] %></div>
-    </span>
   </h6>
   <div class="card-body">
     <span data-toggle="tooltip" data-placement="right" title="Click here to edit">
@@ -20,7 +19,7 @@
       <% end %>
       <h1><%= lection.title %></h1>
       <hr>
-      <h6 class="card-title"><%= "#{lection.description}"+" | " + "#{t('new.speciality')}" + "#{lection.speciality}" %> </h6>
+      <h6 class="card-title"><%= lection.description+" | " + "#{t('new.speciality')}" + "#{lection.speciality}" %> </h6>
       <hr>
       <% if lection.body.length > 250 %>
       <%= truncate(lection.body, length: 250) %>

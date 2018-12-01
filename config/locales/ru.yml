@@ -25,6 +25,7 @@ ru:
     locked: "Заблокирован"
     unlocked: "Разблокирован"
     user_panel: "Панель управления пользователями"
+    average_rate: "Средняя оценка"
   edit:
     confirmation: "Ждём подтверждение для: "
   admin_panel:

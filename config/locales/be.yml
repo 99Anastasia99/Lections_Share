@@ -25,6 +25,7 @@ be:
     locked: "Заблякаваны"
     unlocked: "Разблякаваны"
     user_panel: "Панэль кіравання карыстальнікамі"
+    average_rate: "Cярэдняя адзнака"
   edit:
     confirmation: "Чакаем пацверджанне для: "
   admin_panel:

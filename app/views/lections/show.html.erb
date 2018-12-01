@@ -1,13 +1,10 @@
 <div class="container">
   <div class="card mb-4">
     <h6 class="card-header">
-      <span data-toggle="tooltip" data-placement="left" title="Click here to see the profile">
-      <%= t('home.by') %>  <%=link_to @lection.user.username, @lection.user  %>
-      <div id="rating_results" date-rome>
+      <%= t('home.by') %>  <%= link_to @lection.user.username, @lection.user %>
+      <div class="row float-right" id="rating_results" style= "margin: 5px">
       <%= render 'ratings/create' %>
       </div>
-        <div class="badge badge-pill badge-secondary float-right"><%= t('home.created_at')%><%= @lection.created_at.to_s.split('+0300')[0] %></div>
-      </span>
     </h6>
     <div class="card-body">
       <span data-toggle="tooltip" data-placement="right" title="Click here to edit">
@@ -32,7 +29,7 @@
         <% @lection.tag_list.each do |tag| %>
         <span class="badge badge-pill badge-info"><%= tag %></span>
         <% end %>
-        <div class="badge badge-pill badge-primary float-right"> <%= "#{t('home.updated_at')}" + "#{@lection.updated_at.to_s.split('+0300')[0]}" %></div>
+        <div class="badge badge-pill badge-secondary float-right"><%= t('home.created_at')%><%= @lection.created_at.to_s.split('+0300')[0] %></div>
       </div>
     </div>
   </div>
@@ -55,7 +52,7 @@
   </div>
   <% end %>
   <% end %>
-  <div id="comment_pane_<% @lection.id %>">
+  <div id="comment_pane_<%=@lection.id %>">
     <% @comments.each do |comment| %>
     <%= render 'comments/comment', comment: comment %>
     <% end %>

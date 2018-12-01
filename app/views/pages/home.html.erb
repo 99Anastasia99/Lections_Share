@@ -1,7 +1,13 @@
 <div class="container">
+  <h2><%= t('home.most_rated') %>
+      <%= link_to t('home.see_all'), {  :controller => "lections", :action => "index" }, class: "btn btn-outline-dark btn-sm" %>
+    <h2>
   <div class="row">
     <div class="col-md-8">
-      <%= render Lection.all %>
+      <%= render Lection.where("average_rate > ?", 0).limit(3).order(average_rate: :desc) %>
+
+      <h1 style="margin: 5px"><%= t('home.most_recent') %></h1>
+      <%= render Lection.all.order(created_at: :desc).limit(3) %>
       </div>
     <div class="col-md-4">
       <%= render 'layouts/widget' if current_user %>

@@ -56,6 +56,7 @@ en:
     locked: "Locked"
     unlocked: "Unlocked"
     user_panel: "User Panel"
+    average_rate: "Average rating"
   edit:
     confirmation: "Currently waiting confirmation for: "
   admin_panel:

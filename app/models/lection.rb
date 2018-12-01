@@ -19,10 +19,10 @@ class Lection < ApplicationRecord
     if self.ratings.count > 1
       rating_sum = 0
       self.ratings.pluck(:rating).each { |t| rating_sum += t }
-      return average_rate = rating_sum / self.ratings.count
+      average_rate = rating_sum.to_f / self.ratings.count.to_f
       self.update(:average_rate => average_rate)
+      return average_rate
     end
-
   end
 
 end
