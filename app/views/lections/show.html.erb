@@ -13,7 +13,7 @@
         <div class="btn-group dropleft float-right">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
           <div class="dropdown-menu">
-            <%= link_to t('common.destroy'), @lection,class:"dropdown-item align-middle" , method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to t('common.destroy'),@lection,class:"dropdown-item align-middle" , method: :delete, data: { confirm: 'Are you sure?' } %>
             <td><%= link_to t('common.edit'), edit_lection_path(@lection),class:"dropdown-item align-middle" %></td>
           </div>
         </div>
