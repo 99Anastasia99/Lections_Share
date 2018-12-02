@@ -4,7 +4,7 @@ ruby '2.5.3'
 gem 'chewy'
 gem 'will_paginate', '~> 3.1.0'
 gem 'redcarpet'
-gem "socialization"
+gem "socialization", "< 1.2.1"
 gem 'best_in_place', '~> 3.0.1'
 gem "jquery-rails"
 gem 'acts-as-taggable-on', '~> 6.0'
