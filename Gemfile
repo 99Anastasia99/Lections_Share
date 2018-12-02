@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby '2.3.3'
+ruby '2.5.3'
 gem 'chewy'
 gem 'will_paginate', '~> 3.1.0'
 gem 'redcarpet'
 gem "socialization"
 gem 'best_in_place', '~> 3.0.1'
 gem "jquery-rails"
-gem 'filterrific'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'bootstrap'
 gem 'simple_form'
