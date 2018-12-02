@@ -8,6 +8,7 @@ be:
     read_more: "Чытаць далей"
     edit: "Рэдагаваць"
     destroy: "Выдаліць канспект"
+    delete: "Выдаліць"
     error: "памылкі(ка)"
     prohibited: "не дазваляюць дадаць канспект"
     back: "Назад"
@@ -19,7 +20,7 @@ be:
     cancel: "Выдаліць рахунак"
     update: "Аднавіць"
     admin: "Адміністратар"
-    user: "Kарыстальнікамі"
+    user: "Kарыстальнік"
     lock: "Заблакаваць"
     unlock: "Разблакаваць"
     locked: "Заблякаваны"
@@ -28,6 +29,7 @@ be:
     average_rate: "Cярэдняя адзнака"
   edit:
     confirmation: "Чакаем пацверджанне для: "
+    password_confirmation: "Падцверджане пароля"
   admin_panel:
     up: "Павысіць"
     down: "Панізіць"
@@ -70,7 +72,7 @@ be:
         tags: "Тэгі: "
       user:
         username: "Iмя карыстальніка"
-        email: "Email"
+        email: "Электронная пошта"
         password: "Пароль"
         status: "Статус"
         role: "Роля"

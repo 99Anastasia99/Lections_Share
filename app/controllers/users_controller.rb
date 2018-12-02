@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def current_user_theme
+    current_user.update(theme: params[:theme])
+    cookies[:theme]=params[:theme]
+    redirect_to root_path
+  end
+
   def destroy
     @user = User.find(params[:id])
   end
@@ -36,7 +42,7 @@ class UsersController < ApplicationController
     elsif params_edit == t('common.lock')
       @user.each {|user_to_lock| user_to_lock.lock_access! }
     elsif params_edit == t('common.unlock')
-      @user.each {|user_to_unlock| user_to_unlock.unlock_access!} 
+      @user.each {|user_to_unlock| user_to_unlock.unlock_access!}
     elsif params_edit == t('admin_panel.up')
       @user = make_admin
     elsif params_edit == t('admin_panel.down')

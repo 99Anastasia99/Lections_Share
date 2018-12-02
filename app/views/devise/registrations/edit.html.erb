@@ -4,35 +4,34 @@
   <%= devise_error_messages! %>
   <div class="form-inputs">
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <p><%= t('edit.confirmation') + resource.unconfirmed_email %></p>
     <% end %>
     <div class="form-group">
-      <%= f.email_field :email,required: true, autofocus: true, class: 'form-control input-lg', autocomplete: "email",placeholder: "Email adress" %>
+      <%= f.email_field :email,required: true, autofocus: true, class: 'form-control input-lg', autocomplete: "email",placeholder: t('activrecord.attributes.user.email') %>
     </div>
 
     <div class="form-group">
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password,required: true,class: 'form-control input-lg', autocomplete: "new-password",placeholder: "Password" %>
+      <%= f.password_field :password,required: true,class: 'form-control input-lg', autocomplete: "new-password",placeholder: t('activrecord.attributes.user.password') %>
     </div>
 
     <div class="form-group">
       <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation,required: true,class: 'form-control input-lg', autocomplete: "new-password", placeholder: "Password confirmation"%>
+      <%= f.password_field :password_confirmation,required: true,class: 'form-control input-lg', autocomplete: "new-password", placeholder: t('activrecord.attributes.user.password_confirmation') %>
     </div>
     <div class="form-group">
       <%= f.label :current_password %>
-      <%= f.password_field :current_password,required: true,class: 'form-control input-lg', autocomplete: "new-password", placeholder: "Password confirmation"%>
+      <%= f.password_field :current_password,required: true,class: 'form-control input-lg', autocomplete: "new-password", placeholder: t('activrecord.attributes.user.current_password')%>
     </div>
 
   </div>
   <div class="form-actions">
     <div class="row">
-      <%= f.submit t('common.update'), class: "btn btn-outline-info", style: "margin: 5px" %>
+    <%= f.submit t('common.update'), class: "btn btn-outline-info" %>
     </div>
   </div>
   <% end %>
   </div>
-</div>
 </div>

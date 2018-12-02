@@ -7,6 +7,7 @@
     </div>
   </div>
   <div class="col-md-3">
+    <%= link_to "Add new like user", {controller: "lections", action: "create", user: current_user }, class: "btn btn-outline-secondary btn-sm" %>
     <% if current_user == @user %>
     <%= render 'users/edit_widget'  %>
     <% end %>

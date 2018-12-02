@@ -2,15 +2,13 @@
 <html>
   <head>
     <title>Lections</title>
-    <link rel="stylesheet" type="text/css" href="trix.css">
-    <script type="text/javascript" src="trix.js"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body class="<%= current_user ? current_user.theme == "dark" ? "dark" : "light" : cookies[:theme] %>_theme">
       <%= render 'layouts/navbar' %>
     <%= render 'layouts/alerts' %>
     <%= yield %>

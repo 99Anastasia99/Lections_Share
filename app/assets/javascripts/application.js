@@ -23,9 +23,6 @@
 //= require popper
 //=require bootstrap-sprockets
 
-//= require jquery.raty
-//= require ratyrate
-
 $(document).ready(function() {
   /* Activating Best In Place */
   jQuery(".best_in_place").best_in_place();

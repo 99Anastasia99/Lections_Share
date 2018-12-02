@@ -1,11 +1,11 @@
 <div class="row">
-  <div style= "margin: 5px"> <%= "#{t('common.average_rate')}: " + @lection.average_rating.to_s %></div>
+  <div style= "margin: 10px"> <%= @lection.average_rating ? t('common.average_rate') +":" + @lection.average_rating.to_s : "" %></div>
   <% if current_user %>
   <% 1.upto(5) do |t| %>
   <% if @lection.current_user_rating(current_user) < t %>
-  <%= link_to "☆", ratings_create_path(:lection_id => @lection.id, :rating => t ), class: "btn btn-light btn-sm", remote: true  %>
+  <%= link_to "☆", ratings_create_path(:lection_id => @lection.id, :rating => t ), class: "btn btn_theme", remote: true  %>
   <% else %>
-  <%= link_to "⭐", ratings_create_path(:lection_id => @lection.id, :rating => t ), class: "btn btn-light btn-sm",  remote: true  %>
+  <%= link_to "⭐", ratings_create_path(:lection_id => @lection.id, :rating => t ), class: "btn btn_theme",  remote: true  %>
   <% end %>
   <% end %>
   <% end %>

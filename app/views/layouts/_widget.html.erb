@@ -1,6 +1,7 @@
 <div class="card">
   <h5 class="card-header">
     <%= link_to current_user.username, current_user %>
+    <%= link_to "Theme Mode", {controller: "users", action: "current_user_theme", theme: current_user.theme == "light" ? "dark" : "light" }, class: "btn btn-outline-info btn-sm float-right" %> 
   </h5>
   <div class="card-body">
     <div class="h6 text-muted"> <%= t('home.lection')%> </div>

@@ -102,7 +102,7 @@
 
           <div class="form-group row">
             <div class= "col-4 col-form-label">
-              <p> <%= t('new.tags') %> <a href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'> <%= t('new.markdown') %></a></p>
+              <p> <%= t('new.body') %> <a href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'> <%= t('new.markdown') %></a></p>
             </div>
             <div class="col-8">
               <%= form.text_area :body, class: "form-control", rows: 5 %>
@@ -114,7 +114,7 @@
               <p> <%= t('new.tags') %> </p>
             </div>
             <div class="col-8">
-              <%= form.text_field :tag_list, class: "form-control", id: "tags", data: {autocomplete: ActsAsTaggableOn::Tag.pluck(:name)} %>
+              <%= form.text_field :tag_list, class: "form-control ", id: "tags", data: {autocomplete: ActsAsTaggableOn::Tag.pluck(:name)} %>
             </div>
           </div>
 

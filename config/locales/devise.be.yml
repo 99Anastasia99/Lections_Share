@@ -16,7 +16,7 @@ be:
         last_sign_in_ip:
         locked_at:
         password: "Пароль"
-        password_confirmation: "пацвердзіце пароль"
+        password_confirmation: "Пацвердзіце пароль"
         remember_created_at:
         remember_me: "Запомніць мяне"
         reset_password_sent_at:

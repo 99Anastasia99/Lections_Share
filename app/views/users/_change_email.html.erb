@@ -6,7 +6,7 @@
   <div><%= best_in_place @user, :email, required: true, id: "email", autofocus: true %> </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-  <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+  <p> <%= t('edit.confirmation') + resource.unconfirmed_email %></p>
   <% end %>
   <strong><%= f.input :password, required: false, id: "new_password", input_html: { autocomplete: "new-password" } %>
 
@@ -17,6 +17,6 @@
 </div>
 
 <div class="form-actions">
-  <%= f.button :submit, t('common.update'),class: "btn btn-outline-info", style: "margin: 5px",style: "margin: 5px"%>
+  <%= f.button :submit, t('common.update'),class: "btn btn-outline-info", style: "margin: 5px"%>
 </div>
 <% end %>

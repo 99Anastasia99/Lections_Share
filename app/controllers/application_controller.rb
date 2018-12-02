@@ -15,11 +15,6 @@ class ApplicationController < ActionController::Base
     end
     cookies[:locale] = I18n.locale
   end
-
-  def set_locale_cookie
-    cookies[:locale] = params[:locale]
-    redirect_to root_path
-  end
   
   protected
 
