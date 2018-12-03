@@ -37,12 +37,7 @@ class LectionsController < ApplicationController
   end
   # GET /lections/new
   def new
-    if current_user.admin && params[:user_id]
-    @user = User.find(user_id)
-    @lection = @user.lections.new
-    else
       @lection = current_user.lections.new
-    end
   end
 
   # GET /lections/1/edit

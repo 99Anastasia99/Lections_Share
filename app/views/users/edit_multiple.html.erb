@@ -1,8 +1,6 @@
+<% if current_user.admin %>
 <div class="container">
   <%= form_tag users_edit_multiple_path(@user), method: :get do %>
-  <script type="text/javascript">
- window.location.href="<%= root_path %>"
-</script>
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default panel-table">
@@ -58,3 +56,8 @@
 </div>
 <% end %>
 </div>
+<% else %>
+<script type="text/javascript">
+ window.location.href="<%= root_path %>"
+</script>
+<% end %>
