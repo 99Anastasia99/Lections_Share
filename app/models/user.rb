@@ -4,12 +4,13 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :lections, dependent: :destroy
   has_many :ratings, dependent: :destroy
-  validates :username,presence: true, length: {maximum: 20}, uniqueness: { scope: :username, message: t('home.unique') },allow_nil: false
+  validates :username,length: {maximum: 20},presence: true, uniqueness: { scope: :username, message: "must be unique for each user" },allow_nil: false
+
   before_create :confirmation_token
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable,:lockable,:omniauthable,:confirmable, omniauth_providers: [:facebook, :vkontakte, :twitter]
+  :recoverable, :rememberable, :validatable,:lockable,:omniauthable, omniauth_providers: [:facebook, :vkontakte, :twitter]
 
   def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
