@@ -13,17 +13,15 @@ Devise.setup do |config|
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
-
+  config.mailer_sender = "enjoystudying@heroku.com"
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = '99nastyusha99@gmail.com'
-  # config.omniauth :facebook, "KEY", "SECRET"
-  # config.omniauth :twitter, "KEY", "SECRET"
-  # config.omniauth :vkontakte, "KEY", "SECRET"
+  config.omniauth :facebook, '307019950147806', 'd22533dc934f6ee2727b69d6fec36c6a', token_params: { parse: :json }
+  config.omniauth :vkontakte, '6769942', '7pSV7IopxtKxO5PDXR4l'
+  config.omniauth :twitter, '1061360799300624384-VrzUTHFBcyjT68P42dNCmyBhJQxmIu', '2d0p16GljtFMIHrf9RuNYmfzX4NT3VjmZ9bBDUMBxgzr2'
   # Configure the class responsible to send e-mails.
-  config.mailer = 'UserMailer'
   config.reconfirmable = false
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'

@@ -25,7 +25,8 @@ ru:
     locked: "Заблокирован"
     unlocked: "Разблокирован"
     user_panel: "Панель управления пользователями"
-    average_rate: "Средняя оценка"
+    average_rate: "Средняя оценка: "
+    delete: "Удалить"
   edit:
     confirmation: "Ждём подтверждение для: "
   admin_panel:
@@ -41,6 +42,10 @@ ru:
     search_for: "Результаты поиска по запросу: "
     actions: "Действия: "
     has: " имеет "
+    see_all: "Посмотреть ещё"
+    most_recent: "По добавлению"
+    most_rated: 'По рейтингу'
+    minimum: ' знаков минимум'
   show:
     comment: "Начните писать коментарии!"
     need: "Вы должны"

@@ -17,6 +17,8 @@
 //= require_tree .
 //= require jquery3
 
+//= require md_simple_editor
+
 //= require jquery
 //= require best_in_place
 

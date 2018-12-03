@@ -56,7 +56,8 @@ en:
     locked: "Locked"
     unlocked: "Unlocked"
     user_panel: "User Panel"
-    average_rate: "Average rating"
+    average_rate: "Average rating: "
+    delete: "Delete"
   edit:
     confirmation: "Currently waiting confirmation for: "
   admin_panel:
@@ -76,6 +77,10 @@ en:
     search_for: "Results for: "
     actions: "Actions"
     has: " has "
+    see_all: "See all"
+    most_recent: "Most recent"
+    most_rated: 'Most rated'
+    minimum: ' characters minimum'
   new:
     title: "Title: "
     body:  "Body: "

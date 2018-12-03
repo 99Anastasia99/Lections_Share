@@ -26,7 +26,9 @@ be:
     locked: "Заблякаваны"
     unlocked: "Разблякаваны"
     user_panel: "Панэль кіравання карыстальнікамі"
-    average_rate: "Cярэдняя адзнака"
+    average_rate: "Cярэдняя адзнака: "
+    delete: "Выдаліць"
+
   edit:
     confirmation: "Чакаем пацверджанне для: "
     password_confirmation: "Падцверджане пароля"
@@ -47,6 +49,10 @@ be:
     search_for: "Вынікі пошуку па запыце:"
     actions: "Дзеянні: "
     has: " мае "
+    see_all: "Паглядзець яшчэ"
+    most_recent: "Па даданню"
+    most_rated: 'Па рэйтынгу'
+    minimum: ' знакаў мінімум'
   new:
     title: "Назва: "
     body: "Змест канспекта: "

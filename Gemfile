@@ -2,6 +2,14 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 gem 'chewy'
+gem 'md_simple_editor', :git => 'https://github.com/MrBlazOn/md_simple_editor.git'
+gem 'omniauth-facebook', '~> 4.0'
+# Use Omniauth Twitter plugin
+gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
+
+gem 'omniauth-vkontakte'
+# Use ActiveRecord Sessions
+gem 'activerecord-session_store', '~> 1.0'
 gem 'will_paginate', '~> 3.1.0'
 gem 'redcarpet'
 gem "socialization", "< 1.2.1"
@@ -17,6 +25,7 @@ gem 'devise'
 gem 'bonsai-elasticsearch-rails', '~> 6'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use mysql as the database for Active Record
@@ -57,6 +66,7 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
+  gem 'dotenv', '~> 2.2.1'
 end
 
 group :test do

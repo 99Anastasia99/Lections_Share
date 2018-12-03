@@ -12,15 +12,15 @@
             <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
             <a href="#" class="btn btn-vk"><i class="fa fa-vk"></i> Vkontakte</a>
           </div>
-        <br> <%= f.text_field :username, class: 'form-control input-lg', autocomplete: "username",placeholder:  t('activerecord.attributes.uesr.username') %> </br>
-       <%= f.email_field :email, autofocus: true, class: 'form-control input-lg', autocomplete: "email",placeholder:  t('activerecord.attributes.user.email') %> %>
+        <br> <%= f.text_field :username, class: 'form-control input-lg', autocomplete: "username",placeholder:  t('activerecord.attributes.user.username') %> </br>
+       <%= f.email_field :email, autofocus: true, class: 'form-control input-lg', autocomplete: "email",placeholder:  t('activerecord.attributes.user.email') %>
         </div>
 
         <div class="form-group">
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length.to_s +  t('home.minimum') %>)</em>
           <% end %><br />
-          <%= f.password_field :password,class: 'form-control input-lg', autocomplete: "new-password",placeholder:  t('activerecord.attributes.user.password') %> %>
+          <%= f.password_field :password,class: 'form-control input-lg', autocomplete: "new-password",placeholder:  t('activerecord.attributes.user.password') %>
         </div>
 
         <div class="form-group">

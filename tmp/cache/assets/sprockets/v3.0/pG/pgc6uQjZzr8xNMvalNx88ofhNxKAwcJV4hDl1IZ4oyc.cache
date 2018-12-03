@@ -1,0 +1,68 @@
+I"®
+(function() {
+  var initializeEditor, insertAtCaret, md_simple_editor;
+
+  md_simple_editor = function() {
+    return $('.btn-toolbar .btn-group button').click(function() {
+      var att_class, option, rgex, text, textarea;
+      att_class = this.classList;
+      rgex = /md_/;
+      option = $.grep(att_class, function(item) {
+        return rgex.test(item);
+      });
+      if (option.length !== 0) {
+        option = option[0].toString();
+        text = option === 'md_h1' ? "# " : option === 'md_h2' ? "## " : option === 'md_h3' ? "### " : option === 'md_h4' ? "#### " : option === 'md_h5' ? "##### " : option === 'md_italic' ? "_italic_" : option === 'md_bold' ? "__bold__" : option === 'md_list-ul' ? "* " : option === 'md_list-ol' ? "1. " : option === 'md_indent' ? "> " : option === 'md_underline' ? "<u>underline</u>" : option === 'md_table' ? "\n|Header|Header|Header|\n|:------|:-------:|------:|\n|Left alignment|Centered|Right alignment|\n" : option === 'md_minus' ? "\n<hr>\n" : option === 'md_link' ? "[]()" : option === 'md_camera-retro' ? "![]()" : void 0;
+        textarea = $('#md-editor #md-text textarea');
+        return insertAtCaret(textarea.attr('id'), text);
+      }
+    });
+  };
+
+  insertAtCaret = function(areaId, text) {
+    var back, br, front, range, scrollPos, strPos, txtarea;
+    txtarea = document.getElementById(areaId);
+    scrollPos = txtarea.scrollTop;
+    strPos = 0;
+    br = (txtarea.selectionStart || txtarea.selectionStart === "0" ? "ff" : (document.selection ? "ie" : false));
+    if (br === "ie") {
+      txtarea.focus();
+      range = document.selection.createRange();
+      range.moveStart("character", -txtarea.value.length);
+      strPos = range.text.length;
+    } else {
+      if (br === "ff") {
+        strPos = txtarea.selectionStart;
+      }
+    }
+    front = txtarea.value.substring(0, strPos);
+    back = txtarea.value.substring(strPos, txtarea.value.length);
+    txtarea.value = front + text + back;
+    strPos = strPos + text.length;
+    if (br === "ie") {
+      txtarea.focus();
+      range = document.selection.createRange();
+      range.moveStart("character", -txtarea.value.length);
+      range.moveStart("character", strPos);
+      range.moveEnd("character", 0);
+      range.select();
+    } else if (br === "ff") {
+      txtarea.selectionStart = strPos;
+      txtarea.selectionEnd = strPos;
+      txtarea.focus();
+    }
+    return txtarea.scrollTop = scrollPos;
+  };
+
+  initializeEditor = function() {
+    md_simple_editor();
+    $(document).off('turbolinks:load page:load ready', initializeEditor);
+    return $('.preview_md').click(function() {
+      return preview();
+    });
+  };
+
+  $(document).on('turbolinks:load page:load ready', initializeEditor);
+
+}).call(this);
+:ET

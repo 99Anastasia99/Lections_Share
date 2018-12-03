@@ -105,7 +105,9 @@
               <p> <%= t('new.body') %> <a href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'> <%= t('new.markdown') %></a></p>
             </div>
             <div class="col-8">
+              <%= md_simple_editor  do %>
               <%= form.text_area :body, class: "form-control", rows: 5 %>
+              <% end %>
             </div>
           </div>
 

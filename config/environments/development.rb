@@ -9,9 +9,18 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { :host => 'enjoy@heroku.com' }
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address              =>  'smtp.sendgrid.net',
+    :port                 =>  '587',
+    :authentication       =>  :plain,
+    :user_name            =>  'app117624749@heroku.com',
+    :password             =>  '0b0eq9n12062',
+    :domain               =>  'heroku.com',
+    :enable_starttls_auto  =>  true
+  }
+
   # Do not eager load code on boot.
   config.eager_load = false
 
