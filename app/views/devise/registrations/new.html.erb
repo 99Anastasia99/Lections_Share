@@ -9,11 +9,13 @@
 
         <div class="form-group">
           <div class="social-buttons">
+            <div class="row">
             <%- if devise_mapping.omniauthable? %>
             <%- resource_class.omniauth_providers.each do |provider| %>
             <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider),class: "btn btn-outline-primary"  %><br />
             <% end -%>
             <% end -%>
+            </div>
           </div>
         <br> <%= f.text_field :username, class: 'form-control input-lg', autocomplete: "username",placeholder:  t('activerecord.attributes.user.username') %> </br>
        <%= f.email_field :email, autofocus: true, class: 'form-control input-lg', autocomplete: "email",placeholder:  t('activerecord.attributes.user.email') %>

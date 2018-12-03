@@ -12,10 +12,23 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable,:lockable,:confirmable,:omniauthable, omniauth_providers: [:facebook, :vkontakte, :twitter]
 
-  def self.from_omniauth(auth)
-  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-    user.email = auth.info.email
-    user.password = Devise.friendly_token[0,20]
+  def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    if user
+      return user
+    else
+      registered_user = User.where(:email => auth.info.email).first
+      return registered_user if registered_user
+        user = User.new(
+        username:auth.extra.raw_info.name,
+        provider:auth.provider,
+        uid:auth.uid,
+        email:auth.info.email,
+        password:Devise.friendly_token[0,20]
+      )
+      user.skip_confirmation!
+      user.save
+      user
+    end
   end
-end
 end
