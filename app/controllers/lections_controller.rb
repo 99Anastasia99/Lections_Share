@@ -22,10 +22,11 @@ class LectionsController < ApplicationController
     @query= params[:search_lections].presence && params[:search_lections][:query]
     if @query
       @lections=LectionsIndex.query(multi_match: {fields: ['title','description','body','user','comments'], query: @query, type: "phrase_prefix"}).objects
-    end
-    respond_to do |format|
-      format.html
-      format.js
+      if @lections.to_i > 0
+        @lections
+      else
+        redirect_to root_path
+      end
     end
   end
 
@@ -37,18 +38,21 @@ class LectionsController < ApplicationController
   end
   # GET /lections/new
   def new
-      @lection = current_user.lections.new
+    if current_user.admin and admin_as_user
+      @new_user = User.find(admin_as_user)
+      @lection =  @new_user.lections.new
+    else
+      @lection =  current_user.lections.new
+    end
   end
-
-  # GET /lections/1/edit
-  def edit
-  end
-
-  # POST /lections
-  # POST /lections.json
+  
   def create
     @lection = Lection.new(lection_params)
-    @lection = current_user.lections.new(lection_params)
+    if new_user = User.find_by(username: params[:commit].split().last)
+      @lection = new_user.lections.new(lection_params)
+    else
+      @lection = current_user.lections.new(lection_params)
+    end
     respond_to do |format|
       if @lection.save
         format.html { redirect_to @lection, notice: 'Lection was successfully created.' }
@@ -58,6 +62,9 @@ class LectionsController < ApplicationController
         format.json { render json: @lection.errors, status: :unprocessable_entity }
       end
     end
+  end
+  # GET /lections/1/edit
+  def edit
   end
 
   # PATCH/PUT /lections/1
@@ -85,6 +92,10 @@ class LectionsController < ApplicationController
   end
 
   private
+
+  def admin_as_user
+    params[:admin_as_user]
+  end
   # Use callbacks to share common setup or constraints between actions.
   def set_lection
     @lection = Lection.find(params[:id])

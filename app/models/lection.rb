@@ -25,5 +25,4 @@ class Lection < ApplicationRecord
       return average_rate
     end
   end
-
 end

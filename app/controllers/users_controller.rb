@@ -5,10 +5,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @lections= @user.lections.order(params_sort + " " + params_direction)
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def current_user_theme

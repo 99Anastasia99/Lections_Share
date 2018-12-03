@@ -6,7 +6,6 @@ Rails.application.routes.draw do
       get :search
     end
   end
-
   resources :users, only: [:update, :show, :destroy]
   get 'tagged', to: "lections#tagged"
   root to: "pages#home"
