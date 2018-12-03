@@ -58,6 +58,7 @@ en:
     user_panel: "User Panel"
     average_rate: "Average rating: "
     delete: "Delete"
+    unique: " must be unique for each user"
   edit:
     confirmation: "Currently waiting confirmation for: "
   admin_panel:
